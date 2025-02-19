@@ -21,7 +21,7 @@ jobs:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Inject slug/short variables
         id: inject_vars
-        uses: rlespinasse/github-slug-action@v4
+        uses: rlespinasse/github-slug-action@v5
       
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
