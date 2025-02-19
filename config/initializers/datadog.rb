@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
-require "datadog/statsd"
-require "datadog/auto_instrument"
-require "datadog"
-
+require 'datadog/statsd'
 Datadog.configure do |c|
-  c.profiling.enabled = true
   c.runtime_metrics.enabled = true
-  # c.env = Rails.env.to_s
-  # c.service = ENV.fetch('DD_SERVICE', 'chiirp')
-  # c.version = ENV.fetch('APP_REVISION', 'unknown')[0, 8]
+  c.tracing.instrument :rails
+  c.diagnostics.debug = true
+  c.env = 'dev'
+  c.runtime_metrics.statsd = Datadog::Statsd.new
 end
